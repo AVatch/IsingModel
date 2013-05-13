@@ -6,24 +6,21 @@
 
 using namespace std;
 
-//File to throw data into
-//ofstream DATA("output.dat",ios::out);
-
 //struct for 2D lattice
 struct lat_coord{
 	int x;
 	int y;
 };
 
-const int size	 = 1000;		//lattice size
+const int size	 = 2;			//lattice size
 const int lsize	 = size-1;		//array size for lattice
 const int n	 = size*size;		//number of spin points on sq latice
-float T		 = 0.001;		//starting point for temperature
-const float minT = 0.001;		//minimum temperature
-float change	 = 0.01;		//size of steps of temp loop
+float T		 = 5.0;			//starting point for temperature
+const float minT = 0.5;			//minimum temperature
+float change	 = 0.1;			//size of steps of temp loop
 int lat[size+1][size+1];		//2D lattice for holding spins
-long unsigned int mcs = 100000;		//number of Monte Carlo steps
-int transient	 = 10000;		//number of transient steps
+long unsigned int mcs = 10000;		//number of Monte Carlo steps
+int transient	 = 1000;		//number of transient steps
 double norm	 = (1.0/float(mcs*n));  //normalization const for avgs
 
 //initializer
