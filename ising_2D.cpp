@@ -12,15 +12,16 @@ struct lat_coord{
 	int y;
 };
 
-const int size	 = 2;			//lattice size
-const int lsize	 = size-1;		//array size for lattice
-const int n	 = size*size;		//number of spin points on sq latice
-float T		 = 5.0;			//starting point for temperature
-const float minT = 0.5;			//minimum temperature
-float change	 = 0.1;			//size of steps of temp loop
-int lat[size+1][size+1];		//2D lattice for holding spins
-long unsigned int mcs = 10000;		//number of Monte Carlo steps
-int transient	 = 1000;		//number of transient steps
+const int size	 = 10;					//lattice size
+const int lsize	 = size-1;			//array size for lattice
+const int n	 = size*size;				//number of spin points on sq latice
+float T		 = 3.0;						//starting point for temperature
+const float minT = 1.0;					//minimum temperature
+float change	 = 0.01;					//size of steps of temp loop
+int lat[size+1][size+1];				//2D lattice for holding spins
+
+long unsigned int mcs = 100000;		//number of Monte Carlo steps
+int transient	 = 1000;					//number of transient steps
 double norm	 = (1.0/float(mcs*n));  //normalization const for avgs
 
 //initializer
@@ -141,10 +142,9 @@ int total_energy(){
 }
 
 int main(){
-	cout << "HI" << endl;
 	//set up file for data
 	ofstream myfile;
-	myfile.open("Ising2D_Data.dat");
+	myfile.open("Ising2D_Data_T4_1.dat");
 	//declare variables
 	double E=0, Esq=0, Esq_avg=0, E_avg=0, etot=0, etotsq=0;
 	double M=0, Msq=0, Msq_avg=0, M_avg=0, mtot=0, mtotsq=0;
